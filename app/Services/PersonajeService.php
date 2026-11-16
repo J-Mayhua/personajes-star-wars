@@ -50,11 +50,11 @@ class PersonajeService
     }
 
     private function enteroONull(string $valor): ?int
-{
-    $limpio = str_replace(',', '', $valor);
+    {
+        $limpio = str_replace(',', '', $valor);
 
-    return is_numeric($limpio) ? (int) $limpio : null;
-}
+        return is_numeric($limpio) ? (int) $limpio : null;
+    }
 
     private function genero(string $genero): string
     {

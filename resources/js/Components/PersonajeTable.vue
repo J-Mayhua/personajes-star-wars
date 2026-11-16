@@ -74,8 +74,8 @@ const eliminar = (personaje) => {
                 class="rounded-lg bg-white p-4 shadow"
             >
                 <div class="flex items-start justify-between gap-4">
-                    <h3 class="text-base font-semibold text-slate-900">{{ personaje.nombre }}</h3>
-                    <span class="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">
+                    <h3 class="min-w-0 break-words text-base font-semibold text-slate-900">{{ personaje.nombre }}</h3>
+                    <span class="shrink-0 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">
                         {{ origenLabel(personaje) }}
                     </span>
                 </div>

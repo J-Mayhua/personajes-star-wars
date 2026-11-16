@@ -17,14 +17,14 @@ const flash = computed(() => page.props.flash ?? {})
         <main class="mx-auto max-w-6xl px-4 py-6">
             <div
                 v-if="flash.success"
-                class="mb-4 rounded-md bg-green-100 px-4 py-3 text-sm text-green-800"
+                class="mb-4 break-words rounded-md bg-green-100 px-4 py-3 text-sm text-green-800"
             >
                 {{ flash.success }}
             </div>
 
             <div
                 v-if="flash.error"
-                class="mb-4 rounded-md bg-red-100 px-4 py-3 text-sm text-red-800"
+                class="mb-4 break-words rounded-md bg-red-100 px-4 py-3 text-sm text-red-800"
             >
                 {{ flash.error }}
             </div>

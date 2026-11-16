@@ -3,9 +3,7 @@
 use App\Http\Controllers\PersonajeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/personajes');
 
 Route::get('/personajes', [PersonajeController::class, 'index']);
 Route::get('/personajes/crear', [PersonajeController::class, 'create']);

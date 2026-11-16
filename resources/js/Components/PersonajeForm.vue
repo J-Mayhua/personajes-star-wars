@@ -1,5 +1,6 @@
 <script setup>
 import { Link, useForm } from '@inertiajs/vue3'
+import CampoFormulario from './CampoFormulario.vue'
 
 const props = defineProps({
     personaje: {
@@ -35,8 +36,7 @@ const enviar = () => {
 <template>
     <form class="rounded-lg bg-white p-6 shadow" @submit.prevent="enviar">
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <div>
-                <label for="nombre" class="mb-1 block text-sm font-medium text-slate-700">Nombre</label>
+            <CampoFormulario id="nombre" label="Nombre" :error="form.errors.nombre">
                 <input
                     id="nombre"
                     v-model="form.nombre"
@@ -46,11 +46,9 @@ const enviar = () => {
                     maxlength="100"
                     class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-slate-500 focus:outline-none"
                 />
-                <p v-if="form.errors.nombre" class="mt-1 text-sm text-red-600">{{ form.errors.nombre }}</p>
-            </div>
+            </CampoFormulario>
 
-            <div>
-                <label for="genero" class="mb-1 block text-sm font-medium text-slate-700">Género</label>
+            <CampoFormulario id="genero" label="Género" :error="form.errors.genero">
                 <select
                     id="genero"
                     v-model="form.genero"
@@ -62,11 +60,9 @@ const enviar = () => {
                     <option value="femenino">femenino</option>
                     <option value="n/a">n/a</option>
                 </select>
-                <p v-if="form.errors.genero" class="mt-1 text-sm text-red-600">{{ form.errors.genero }}</p>
-            </div>
+            </CampoFormulario>
 
-            <div>
-                <label for="altura" class="mb-1 block text-sm font-medium text-slate-700">Altura (cm)</label>
+            <CampoFormulario id="altura" label="Altura (cm)" :error="form.errors.altura">
                 <input
                     id="altura"
                     v-model="form.altura"
@@ -75,11 +71,9 @@ const enviar = () => {
                     max="300"
                     class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-slate-500 focus:outline-none"
                 />
-                <p v-if="form.errors.altura" class="mt-1 text-sm text-red-600">{{ form.errors.altura }}</p>
-            </div>
+            </CampoFormulario>
 
-            <div>
-                <label for="masa" class="mb-1 block text-sm font-medium text-slate-700">Masa (kg)</label>
+            <CampoFormulario id="masa" label="Masa (kg)" :error="form.errors.masa">
                 <input
                     id="masa"
                     v-model="form.masa"
@@ -88,11 +82,9 @@ const enviar = () => {
                     max="500"
                     class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-slate-500 focus:outline-none"
                 />
-                <p v-if="form.errors.masa" class="mt-1 text-sm text-red-600">{{ form.errors.masa }}</p>
-            </div>
+            </CampoFormulario>
 
-            <div>
-                <label for="color_cabello" class="mb-1 block text-sm font-medium text-slate-700">Color de cabello</label>
+            <CampoFormulario id="color_cabello" label="Color de cabello" :error="form.errors.color_cabello">
                 <input
                     id="color_cabello"
                     v-model="form.color_cabello"
@@ -100,11 +92,9 @@ const enviar = () => {
                     maxlength="100"
                     class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-slate-500 focus:outline-none"
                 />
-                <p v-if="form.errors.color_cabello" class="mt-1 text-sm text-red-600">{{ form.errors.color_cabello }}</p>
-            </div>
+            </CampoFormulario>
 
-            <div>
-                <label for="color_ojos" class="mb-1 block text-sm font-medium text-slate-700">Color de ojos</label>
+            <CampoFormulario id="color_ojos" label="Color de ojos" :error="form.errors.color_ojos">
                 <input
                     id="color_ojos"
                     v-model="form.color_ojos"
@@ -112,11 +102,14 @@ const enviar = () => {
                     maxlength="100"
                     class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-slate-500 focus:outline-none"
                 />
-                <p v-if="form.errors.color_ojos" class="mt-1 text-sm text-red-600">{{ form.errors.color_ojos }}</p>
-            </div>
+            </CampoFormulario>
 
-            <div class="md:col-span-2">
-                <label for="planeta_origen" class="mb-1 block text-sm font-medium text-slate-700">Planeta de origen</label>
+            <CampoFormulario
+                id="planeta_origen"
+                label="Planeta de origen"
+                :error="form.errors.planeta_origen"
+                class="md:col-span-2"
+            >
                 <input
                     id="planeta_origen"
                     v-model="form.planeta_origen"
@@ -124,8 +117,7 @@ const enviar = () => {
                     maxlength="100"
                     class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-slate-500 focus:outline-none"
                 />
-                <p v-if="form.errors.planeta_origen" class="mt-1 text-sm text-red-600">{{ form.errors.planeta_origen }}</p>
-            </div>
+            </CampoFormulario>
 
             <div class="flex flex-wrap gap-2 md:col-span-2">
                 <button
