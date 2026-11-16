@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ImportarPersonajeRequest;
 use App\Http\Requests\PersonajeRequest;
 use App\Models\Personaje;
+use App\Services\PersonajeService;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
+use RuntimeException;
 
 class PersonajeController extends Controller
 {
@@ -50,5 +53,16 @@ class PersonajeController extends Controller
         $personaje->delete();
 
         return redirect('/personajes')->with('success', 'Personaje eliminado correctamente.');
+    }
+
+    public function importar(ImportarPersonajeRequest $request, PersonajeService $personajeService): RedirectResponse
+    {
+        try {
+            $personajeService->importarDesdeSwapi($request->validated()['swapi_id']);
+        } catch (RuntimeException $e) {
+            return back()->withErrors(['swapi_id' => $e->getMessage()]);
+        }
+
+        return redirect('/personajes')->with('success', 'Personaje importado correctamente');
     }
 }
